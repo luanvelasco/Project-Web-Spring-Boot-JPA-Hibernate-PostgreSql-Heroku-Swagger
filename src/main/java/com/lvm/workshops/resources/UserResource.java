@@ -15,7 +15,9 @@ public class UserResource {
 	public ResponseEntity<User> findAll(){
 		//Test the method
 		User user = new User(1L, "Luan Velasco", "luanvelasco@gmail.com", "9999999", "sd5425");
-		return ResponseEntity.ok().body(user);	
+		return ResponseEntity
+				.ok()
+				.body(user);	
 	}
 	
 	
