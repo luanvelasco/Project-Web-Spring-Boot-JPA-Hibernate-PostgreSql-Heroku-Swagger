@@ -1,15 +1,19 @@
 package com.lvm.workshops.entities;
 
 import java.io.Serializable;
+import java.text.ParseException;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.swing.text.MaskFormatter;
 
 @Entity
 public class User implements Serializable {
  
+	private static final String numberFormat = "(##) ##### - ####";
+	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -67,9 +71,17 @@ public class User implements Serializable {
 
 
 	public String getTelephone() {
-		return telephone;
+		MaskFormatter mf;
+		try {
+			mf = new MaskFormatter(numberFormat);
+			mf.setValueContainsLiteralCharacters(false);
+			
+			return mf.valueToString(telephone);
+		}
+		catch (ParseException e) {
+			return telephone;
+		}	
 	}
-
 
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
@@ -85,7 +97,7 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
