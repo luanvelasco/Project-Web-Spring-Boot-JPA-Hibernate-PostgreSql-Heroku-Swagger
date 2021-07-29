@@ -25,9 +25,7 @@ public class User implements Serializable {
 	private String password;
 	
 	
-	public User() {
-		super();
-	}
+	public User() {	}
 
 
 	public User(Long id, String name, String email, String telephone, String password) {
