@@ -19,17 +19,19 @@ public class Employee implements Serializable {
 	private Double employeeTotalSales;
 	private Double employeeBaseSalary;
 	private Double employeeComission;
+	private Double employeeTotalSalary;
 	
 	public Employee() {	}
 
 	public Employee(Long id, String employeeName, Double employeeTotalSales, Double employeeBaseSalary,
-			Double employeeComission) {
+			Double employeeComission, Double employeeTotalSalary) {
 		super();
 		this.id = id;
 		this.employeeName = employeeName;
 		this.employeeTotalSales = employeeTotalSales;
 		this.employeeBaseSalary = employeeBaseSalary;
 		this.employeeComission = employeeComission;
+		this.employeeTotalSalary = employeeBaseSalary + (employeeTotalSales * this.employeeComission);
 	}
 
 	public Long getId() {
@@ -95,5 +97,9 @@ public class Employee implements Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public Double getEmployeeTotalSalary() {
+		return employeeTotalSalary;
 	}
 }
